@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.huaweicloud.sdk:huaweicloud-sdk-core:3.1.105">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.m2/repository/com/huaweicloud/sdk/huaweicloud-sdk-core/3.1.105/huaweicloud-sdk-core-3.1.105.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.m2/repository/com/huaweicloud/sdk/huaweicloud-sdk-core/3.1.105/huaweicloud-sdk-core-3.1.105-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.m2/repository/com/huaweicloud/sdk/huaweicloud-sdk-core/3.1.105/huaweicloud-sdk-core-3.1.105-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
