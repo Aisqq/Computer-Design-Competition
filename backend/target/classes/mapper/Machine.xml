@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybaits.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.backend.Mapper.MachineMapper">
+    <insert id="addMachine">
+        insert into machine(machineid,labelid,machinename,machinetype,machinestatus,materialid)
+        values(#{machineId},#{labelId},#{machineName},#{machineType},#{machineStatus},#{materialId})
+    </insert>
+    <update id="updateMachine">
+        update machine set labelid = #{labelId},machinename=#{machineName},
+                           machinetype=#{machineType},machinestatus=#{machineStatus},materialid=#{materialId}
+        where machineid = #{machineId}
+    </update>
+    <delete id="deleteMachine">
+        delete machine where machineid = #{machineId}
+    </delete>
+    <select id="SelectMachines" resultType="com.example.backend.Entity.Machine">
+        select * from machine
+    </select>
+    <select id="listByCondition" resultType="com.example.backend.Entity.Machine">
+        select * from machine
+        <where>
+            <if test="machineId !='' and machineId != null">
+                machineid like concat('%',#{machineId},'%')
+            </if>
+        </where>
+        ORDER BY machineid ASC
+    </select>
+    <select id="getMachineTypeCounts" resultType="java.util.Map">
+            SELECT m.machinename AS machinename, COUNT(m.machineid) AS count
+            FROM machine m
+            GROUP BY m.machinename
+    </select>
+    <select id="getMachineNameCounts" resultType="java.util.Map">
+        SELECT m.machinetype AS machinetype, COUNT(m.machineid) AS count
+        FROM machine m
+        GROUP BY m.machinetype
+    </select>
+</mapper>

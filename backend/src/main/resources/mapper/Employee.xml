@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybaits.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.backend.Mapper.EmployeeMapper">
+    <insert id="addEmployee" >
+        insert into employee(employeeid,labelid,employeename,employeephone,employeeposition,employeeworkdate,employeestatus)
+        values (#{employeeId},#{labelId},#{employeeName},#{employeePhone},#{employeePosition},#{employeeWorkdate},#{employeeStatus})
+    </insert>
+    <update id="updateEmployee">
+        update employee set labelid = #{labelId},employeename = #{employeeName},employeeposition = #{employeePosition},
+                            employeeworkdate = #{employeeWorkdate},employeephone=#{employeePhone},employeestatus=#{employeeStatus} where employeeid = #{employeeId}
+    </update>
+    <delete id="deleteEmployee">
+        delete employee where employeeid = #{employeeId}
+    </delete>
+    <select id="SelectEmployees" resultType="com.example.backend.Entity.Employee">
+        select * from employee ORDER BY employeeid ASC
+    </select>
+
+<!-- <where>动态sql语句 -->
+    <select id="listByCondition" resultType="com.example.backend.Entity.Employee">
+        select * from employee
+        <where>
+            <if test="employeeName !='' and employeeName != null">
+                employeename like concat('%',#{employeeName},'%')
+            </if>
+        </where>
+        ORDER BY employeeid ASC
+    </select>
+    <select id="getEmployeeTypeCounts" resultType="java.util.HashMap">
+        SELECT e.employeeposition AS employeePosition, COUNT(e.employeeid) AS count
+        FROM employee e
+        GROUP BY e.employeeposition
+    </select>
+</mapper>
+
+        <!--这一段是定义的声名，固定模板-->
+        <!--<?xml version="1.0" encoding="UTF-8" ?>-->
+        <!--<!DOCTYPE mapper-->
+        <!--        PUBLIC "-//mybaits.org//DTD Mapper 3.0//EN"-->
+        <!--        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">-->
+        <!--<mapper namespace="org.mybatis.example.BiogMapper">-->
+        <!--    <select id="selectBlog" resultType="Blog">-->
+        <!--        select * from Blog where id =#{id}-->
+        <!--    </select>-->
+        <!--</mapper>-->

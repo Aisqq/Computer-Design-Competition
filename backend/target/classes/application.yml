@@ -1,0 +1,19 @@
+server:
+  port: 9090
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://10.168.89.105:26000/yishan_db
+    username: yishan
+    password: Zjhw@12345
+
+#//配置xml与接口同步
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+
+
+
+
+
